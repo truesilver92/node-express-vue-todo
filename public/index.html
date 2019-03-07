@@ -26,7 +26,7 @@
       <li v-for="item in filteredItems">
         <label :class="{ item: true, completed: item.completed }">
           {{ item.text }}
-          <input type="checkbox" v-model="item.completed" />
+          <input type="checkbox" v-model="item.completed" @click="completeItem(item)"/>
           <span class="checkmark"></span>
         </label>
         <button @click="deleteItem(item)" class="delete">X</button>
