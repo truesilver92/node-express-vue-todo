@@ -1,0 +1,17 @@
+version: '3'
+services:
+  front:
+    image: python:3-alpine
+    volumes:
+      - ./public:/public:rw
+    ports:
+      - "3080:8000"
+    command: sh -c "cd /public; echo \"starting server\"; python -m http.server"
+
+  back:
+    image: node:8-alpine
+    volumes:
+      - ./:/srv:rw
+    ports:
+      - "3081:80"
+    command: sh -c "cd /srv; echo \"starting server\"; node server.js"
